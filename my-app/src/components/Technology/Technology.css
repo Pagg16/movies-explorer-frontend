@@ -1,0 +1,143 @@
+.technology {
+  background: #272727;
+  box-sizing: border-box;
+  padding: 100px 70px 100px;
+}
+
+@media screen and (max-width: 768px) {
+  .technology {
+    padding: 92px 50px 93px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .technology {
+    padding: 70px 50px 70px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .technology {
+    padding: 70px 14px 70px;
+  }
+}
+
+.technology__header {
+  width: 100%;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 58px;
+  text-align: center;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+  margin: 90px 0 26px;
+}
+
+@media screen and (max-width: 768px) {
+  .technology__header {
+    margin: 78px 0 24px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .technology__header {
+    font-size: 30px;
+    margin-top: 70px;
+  }
+}
+
+.technology__title {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+  margin: 0 auto 100px;
+  max-width: 460px;
+}
+
+@media screen and (max-width: 768px) {
+  .technology__title {
+    font-size: 12px;
+    line-height: 18px;
+    margin-bottom: 80px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .technology__title {
+    font-size: 11px;
+    line-height: 16px;
+    margin-bottom: 50px;
+  }
+}
+
+.technology__exampleBlock {
+  max-width: 690px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto 0;
+}
+
+@media screen and (max-width: 768px) {
+  .technology__exampleBlock {
+    box-sizing: border-box;
+    padding: 0 10px 0;
+  }
+}
+
+@media screen and (max-width: 740px) {
+  .technology__exampleBlock {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-row-gap: 10px;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 490px) {
+  .technology__exampleBlock {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 178px;
+    grid-column-gap: 10px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .technology__exampleBlock {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.technology__exampleText {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  min-height: 60px;
+  background: #303030;
+  border-radius: 10px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  letter-spacing: -0.04em;
+  margin: 0;
+  color: #ffffff;
+  justify-self: center;
+}
+
+@media screen and (max-width: 768px) {
+  .technology__exampleText {
+    font-size: 12px;
+    width: 84px;
+    min-height: 57px;
+  }
+}
