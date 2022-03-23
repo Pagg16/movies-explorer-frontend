@@ -1,0 +1,37 @@
+{
+  "files": {
+    "main.css": "/static/css/main.0445b004.css",
+    "main.js": "/static/js/main.09a0b315.js",
+    "static/js/787.28cb0dcd.chunk.js": "/static/js/787.28cb0dcd.chunk.js",
+    "static/media/movies9.png": "/static/media/movies9.955dcd18580e3782132c.png",
+    "static/media/movies8.png": "/static/media/movies8.56195bea9840e32af751.png",
+    "static/media/movies5.png": "/static/media/movies5.d9599590a315aa0f9ad0.png",
+    "static/media/Inter-Medium.woff?v=3.19": "/static/media/Inter-Medium.9053572c46aeb4b16caa.woff",
+    "static/media/movies6.png": "/static/media/movies6.e1cbb094a7e8688d2401.png",
+    "static/media/Inter-Black.woff?v=3.19": "/static/media/Inter-Black.c6938660eec019fefd68.woff",
+    "static/media/movies4.png": "/static/media/movies4.17ba3478a7f4677ab3ec.png",
+    "static/media/Inter-Regular.woff?v=3.19": "/static/media/Inter-Regular.8c206db99195777c6769.woff",
+    "static/media/movies12.png": "/static/media/movies12.c4d84d6c1887d4536e8d.png",
+    "static/media/movies11.png": "/static/media/movies11.07a52535e69ce5be220a.png",
+    "static/media/movies10.png": "/static/media/movies10.434ba13cfedc7a8cc275.png",
+    "static/media/movies2.png": "/static/media/movies2.16c31c76fb30648dccd3.png",
+    "static/media/Inter-Medium.woff2?v=3.19": "/static/media/Inter-Medium.293fd13dbca5a3e450ef.woff2",
+    "static/media/Inter-Black.woff2?v=3.19": "/static/media/Inter-Black.15ca31c0a2a68f76d2d1.woff2",
+    "static/media/movies3.png": "/static/media/movies3.ce1159f131429ace3a99.png",
+    "static/media/Inter-Regular.woff2?v=3.19": "/static/media/Inter-Regular.c8ba52b05a9ef10f4758.woff2",
+    "static/media/movies1.png": "/static/media/movies1.5872aec3cb6777ab56f1.png",
+    "static/media/movies7.png": "/static/media/movies7.c138e815eb837c890c7d.png",
+    "static/media/landing-logo.png": "/static/media/landing-logo.d740c5db169c67bfcf9b.png",
+    "static/media/logo_header.svg": "/static/media/logo_header.bca2ab18740f8b92de49e90ade4bd0cd.svg",
+    "index.html": "/index.html",
+    "static/media/icon__account.svg": "/static/media/icon__account.8942bb479634fc8ec987.svg",
+    "static/media/check-mark.svg": "/static/media/check-mark.a80bceb339a9d8f84be1.svg",
+    "main.0445b004.css.map": "/static/css/main.0445b004.css.map",
+    "main.09a0b315.js.map": "/static/js/main.09a0b315.js.map",
+    "787.28cb0dcd.chunk.js.map": "/static/js/787.28cb0dcd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0445b004.css",
+    "static/js/main.09a0b315.js"
+  ]
+}
