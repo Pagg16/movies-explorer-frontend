@@ -1,4 +1,5 @@
 {
+  "homepage": "https://screener.nomoredomains.xyz",
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
@@ -17,7 +18,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "gh-pages -d build"
+    "deploy": "scp -r ./build/* patent@51.250.96.148:/home/patent/frontend"
   },
   "eslintConfig": {
     "extends": [
