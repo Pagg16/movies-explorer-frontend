@@ -138,6 +138,12 @@
   width: 396px;
   height: 45px;
   margin-top: 133px;
+  cursor: pointer;
+  transition: all 0.5s linear;
+}
+
+.registration__formButton:hover {
+  opacity: 0.5;
 }
 
 @media screen and (max-width: 430px) {
@@ -165,6 +171,7 @@
   margin: 0;
 }
 
+
 @media screen and (max-width: 430px) {
   .registration__inputText {
     font-size: 12px;
@@ -184,6 +191,12 @@
   color: #4285f4;
   padding: 0;
   margin-left: 8px;
+  cursor: pointer;
+  transition: all 0.5s linear;
+}
+
+.registration__inputButton:hover {
+  opacity: 0.5;
 }
 
 @media screen and (max-width: 430px) {

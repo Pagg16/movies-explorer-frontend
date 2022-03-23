@@ -1,21 +1,21 @@
-.description {
+.aboutProject {
   padding: 112px 70px;
   background: #202020;
 }
 
 @media screen and (max-width: 768px) {
-  .description {
+  .aboutProject {
     padding: 92px 50px;
   }
 }
 
 @media screen and (max-width: 370px) {
-  .description {
+  .aboutProject {
     padding: 70px 18px;
   }
 }
 
-.description__headerText {
+.aboutProject__headerText {
   font-family: "Inter", sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -26,51 +26,51 @@
 }
 
 @media screen and (max-width: 330px) {
-  .description__headerText {
+  .aboutProject__headerText {
     font-size: 18px;
     line-height: 22px;
     margin-bottom: 28px;
   }
 }
 
-.description__borderBottom {
+.aboutProject__borderBottom {
   width: 100%;
   height: 1px;
   background: #dadada;
 }
 
-.description__information {
+.aboutProject__information {
   display: flex;
   justify-content: space-between;
 }
 
 @media screen and (max-width: 540px) {
-  .description__information {
+  .aboutProject__information {
     flex-direction: column;
   }
 }
 
-.description__cell {
+.aboutProject__cell {
   max-width: 500px;
 }
 
-.description__cell:last-child {
+.aboutProject__cell:last-child {
   margin-right: 50px;
 }
 
 @media screen and (max-width: 768px) {
-  .description__cell:last-child {
+  .aboutProject__cell:last-child {
     margin: 0 0 0 40px;
   }
 }
 
 @media screen and (max-width: 540px) {
-  .description__cell:last-child {
+  .aboutProject__cell:last-child {
     margin-left: 0;
   }
 }
 
-.description__cellHeader {
+.aboutProject__cellHeader {
   font-family: "Inter", sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -82,19 +82,19 @@
 }
 
 @media screen and (max-width: 768px) {
-  .description__cellHeader {
+  .aboutProject__cellHeader {
     margin-bottom: 22px;
   }
 }
 
 @media screen and (max-width: 540px) {
-  .description__cellHeader {
+  .aboutProject__cellHeader {
     margin: 25px 0 20px;
   }
 }
 
 @media screen and (max-width: 330px) {
-  .description__cellHeader {
+  .aboutProject__cellHeader {
     font-size: 18px;
     line-height: 22px;
     margin: 0 0 16px;
@@ -102,15 +102,15 @@
 }
 
 @media screen and (max-width: 330px) {
-  .description__cell:first-child {
+  .aboutProject__cell:first-child {
     margin: 60px 0 56px;
   }
-  .description__cell:last-child {
+  .aboutProject__cell:last-child {
     margin-bottom: 60px;
   }
 }
 
-.description__cellText {
+.aboutProject__cellText {
   font-family: "Inter", sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -121,7 +121,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .description__cellText {
+  .aboutProject__cellText {
     font-size: 12px;
     line-height: 18px;
     margin-bottom: 92px;
@@ -129,36 +129,36 @@
 }
 
 @media screen and (max-width: 540px) {
-  .description__cellText {
+  .aboutProject__cellText {
     margin-bottom: 30px;
   }
 }
 
 @media screen and (max-width: 330px) {
-  .description__cellText {
+  .aboutProject__cellText {
     font-size: 11px;
     line-height: 16px;
     margin-bottom: 0px;
   }
 }
 
-.description__deadlines {
+.aboutProject__deadlines {
   display: flex;
 }
 
 @media screen and (max-width: 540px) {
-  .description__deadlines {
+  .aboutProject__deadlines {
     margin-top: 30px;
   }
 }
 
 @media screen and (max-width: 330px) {
-  .description__deadlines {
+  .aboutProject__deadlines {
     margin-top: 0px;
   }
 }
 
-.description__deadlinesBlock {
+.aboutProject__deadlinesBlock {
   width: 20%;
   display: flex;
   flex-direction: column;
@@ -166,34 +166,34 @@
 }
 
 @media screen and (max-width: 768px) {
-  .description__deadlinesBlock {
+  .aboutProject__deadlinesBlock {
     width: 20.96%;
   }
 }
 
 @media screen and (max-width: 500px) {
-  .description__deadlinesBlock {
+  .aboutProject__deadlinesBlock {
     min-width: 100px;
   }
 }
 
-.description__deadlinesBlock_size {
+.aboutProject__deadlinesBlock_size {
   width: 80%;
 }
 
 @media screen and (max-width: 768px) {
-  .description__deadlinesBlock_size {
+  .aboutProject__deadlinesBlock_size {
     width: 79.04%;
   }
 }
 
 @media screen and (max-width: 500px) {
-  .description__deadlinesBlock_size {
+  .aboutProject__deadlinesBlock_size {
     min-width: 184px;
   }
 }
 
-.description__deadlinesText {
+.aboutProject__deadlinesText {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -209,17 +209,18 @@
 }
 
 @media screen and (max-width: 330px) {
-  .description__deadlinesText {
+  .aboutProject__deadlinesText {
     font-size: 11px;
+    margin-bottom: 9px;
   }
 }
 
-.description__deadlinesText_color {
+.aboutProject__deadlinesText_color {
   background: #303030;
   color: #ffffff;
 }
 
-.description__dedlinesSubtitle {
+.aboutProject__dedlinesSubtitle {
   font-family: "Inter";
   font-style: normal;
   font-weight: 500;
@@ -230,7 +231,7 @@
 }
 
 @media screen and (max-width: 330px) {
-  .description__dedlinesSubtitle {
+  .aboutProject__dedlinesSubtitle {
     font-size: 11px;
   }
 }

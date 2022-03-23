@@ -1,32 +1,32 @@
-.signin {
+.login {
   background: #202020;
   padding: 148px 0 70px;
 }
 
 @media screen and (max-width: 768px) {
-  .signin {
+  .login {
     padding: 310px 0 230px;
   }
 }
 
 @media screen and (max-width: 450px) {
-  .signin {
+  .login {
     padding: 144px 0 27px;
   }
 }
 
-.signin__formBlock {
+.login__formBlock {
   max-width: 396px;
   margin: 0 auto 0;
 }
 
 @media screen and (max-width: 450px) {
-  .signin__formBlock {
+  .login__formBlock {
     max-width: 260px;
   }
 }
 
-.signin__tittle {
+.login__tittle {
   font-family: "Inter", sans-serif;
   font-style: normal;
   font-weight: 500;
@@ -37,23 +37,23 @@
 }
 
 @media screen and (max-width: 450px) {
-  .signin__tittle {
+  .login__tittle {
     text-align: center;
   }
 }
 
 @media screen and (max-width: 450px) {
-  .signin__tittle {
+  .login__tittle {
     margin-bottom: 79px;
   }
 }
 
-.signin__form {
+.login__form {
   display: flex;
   flex-direction: column;
 }
 
-.signin__label {
+.login__label {
   font-family: "Inter", sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -62,11 +62,11 @@
   color: #8b8b8b;
 }
 
-.signin__label:nth-of-type(2) {
+.login__label:nth-of-type(2) {
   margin-top: 8px;
 }
 
-.signin__input {
+.login__input {
   width: 100%;
   border: none;
   border-bottom: 1px solid #424242;
@@ -81,13 +81,13 @@
   color: #ffffff;
 }
 
-.signin__input:focus {
+.login__input:focus {
   border-bottom: 1px solid #4285f4;
   outline: none;
   color: white;
 }
 
-.signin__input::placeholder {
+.login__input::placeholder {
   font-family: "Inter", sans-serif;
   font-style: normal;
   font-weight: 500;
@@ -96,7 +96,7 @@
   color: #ffffff;
 }
 
-.signin__inputError {
+.login__inputError {
   font-family: "Inter", sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -107,7 +107,7 @@
   min-height: 12px;
 }
 
-.signin__formButton {
+.login__formButton {
   font-family: "Inter", sans-serif;
   font-style: normal;
   font-weight: 500;
@@ -125,24 +125,30 @@
   align-items: center;
   justify-content: center;
   margin: 202px auto 6px;
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+
+.login__formButton:hover {
+  opacity: 0.5;
 }
 
 @media screen and (max-width: 450px) {
-  .signin__formButton {
+  .login__formButton {
     font-size: 12px;
     min-width: 260px;
     margin: 290px 0 12px;
   }
 }
 
-.signin__inputBlock {
+.login__inputBlock {
   display: flex;
   margin: 16px auto 0;
   max-width: 285px;
   justify-content: center;
 }
 
-.signin__inputText {
+.login__inputText {
   font-family: "Inter", sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -150,16 +156,22 @@
   line-height: 17px;
   color: #8b8b8b;
   margin: 0;
+  transition: all 0.3s linear;
+  cursor: pointer;
+}
+
+.login__inputText:hover {
+  opacity: 0.5;
 }
 
 @media screen and (max-width: 450px) {
-  .signin__inputText {
+  .login__inputText {
     font-size: 12px;
     line-height: 15px;
   }
 }
 
-.signin__inputButton {
+.login__inputButton {
   font-family: "Inter", sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -170,10 +182,16 @@
   padding: 0;
   background: none;
   margin: 0 0 0 6px;
+  transition: all 0.3s linear;
+  cursor: pointer;
+}
+
+.login__inputButton:hover {
+  opacity: 0.5;
 }
 
 @media screen and (max-width: 450px) {
-  .signin__inputButton {
+  .login__inputButton {
     font-size: 12px;
     line-height: 15px;
   }

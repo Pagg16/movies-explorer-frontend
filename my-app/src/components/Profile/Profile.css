@@ -1,27 +1,27 @@
-.account {
+.profile {
   background: #202020;
   padding: 148px 0 70px;
 }
 
 @media screen and (max-width: 768px) {
-  .account {
+  .profile {
     padding: 310px 0 269px;
   }
 }
 
 @media screen and (max-width: 630px) {
-  .account {
+  .profile {
     padding: 200px 50px 269px;
   }
 }
 
 @media screen and (max-width: 460px) {
-  .account {
+  .profile {
     padding: 145px 0 40px;
   }
 }
 
-.account__hello {
+.profile__hello {
   font-family: "Inter", sans-serif;
   font-style: normal;
   font-weight: 500;
@@ -32,19 +32,19 @@
   margin: 0;
 }
 
-.account__inform {
+.profile__inform {
   max-width: 410px;
   margin: 125px auto 220px;
 }
 
 @media screen and (max-width: 768px) {
-  .account__inform {
+  .profile__inform {
     margin: 98px auto 210px;
   }
 }
 
 @media screen and (max-width: 460px) {
-  .account__inform {
+  .profile__inform {
     margin: 81px auto 380px;
     max-width: 260px;
   }
@@ -55,7 +55,7 @@
   justify-content: space-between;
 }
 
-.account__date {
+.profile__date {
   font-family: "Inter", sans-serif;
   font-style: normal;
   font-weight: 500;
@@ -65,18 +65,18 @@
   margin: 0;
 }
 
-.account__underline {
+.profile__underline {
   height: 1px;
   background: #424242;
   margin: 16px 0;
 }
 
-.account__buttonsBlock {
+.profile__buttonsBlock {
   display: flex;
   flex-direction: column;
 }
 
-.account__edit {
+.profile__edit {
   font-family: "Inter", sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -87,15 +87,21 @@
   margin: 0 0 12px;
   border: none;
   background: none;
+  transition: all 0.5s linear;
+  cursor: pointer;
+}
+
+.profile__edit:hover {
+  opacity: 0.5;
 }
 
 @media screen and (max-width: 460px) {
-  .account__edit {
+  .profile__edit {
     font-size: 12px;
   }
 }
 
-.account__exit {
+.profile__exit {
   font-family: "Inter", sans-serif;
   font-style: normal;
   font-weight: 500;
@@ -106,10 +112,16 @@
   margin: 0;
   border: none;
   background: none;
+  cursor: pointer;
+  transition: all 0.5s linear;
+}
+
+.profile__exit:hover {
+  opacity: 0.5;
 }
 
 @media screen and (max-width: 460px) {
-  .account__exit {
+  .profile__exit {
     font-size: 12px;
   }
 }

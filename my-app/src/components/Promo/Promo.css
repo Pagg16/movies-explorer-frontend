@@ -1,29 +1,29 @@
-.start {
+.promo {
   width: 100%;
   background: #073042;
-  padding: 120px 70px 60px;
+  padding: 125px 70px 60px;
   box-sizing: border-box;
 }
 
 @media screen and (max-width: 768px) {
-  .start {
-    padding: 300px 44px 70px;
+  .promo {
+    padding: 375px 44px 70px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  .start {
+  .promo {
     padding-top: calc(100vw / 2.5);
   }
 }
 
 @media screen and (max-width: 470px) {
-  .start {
-    padding: 183px 0 40px;
+  .promo {
+    padding: 257px 0 40px;
   }
 }
 
-.start__text {
+.promo__text {
   max-width: 626px;
   font-family: "Inter", sans-serif;
   font-style: normal;
@@ -36,46 +36,46 @@
 }
 
 @media screen and (max-width: 768px) {
-  .start__text {
+  .promo__text {
     text-align: center;
     margin: 0 auto 0;
   }
 }
 
 @media screen and (max-width: 470px) {
-  .start__text {
+  .promo__text {
     font-size: 31px;
     line-height: 39px;
     max-width: 300px;
   }
 }
 
-.start__logoBlock {
+.promo__logoBlock {
   margin: 102px auto 0;
   overflow: hidden;
   position: relative;
 }
 
 @media screen and (max-width: 1042px) {
-  .start__logoBlock {
+  .promo__logoBlock {
     width: 100%;
     min-height: 230px;
   }
 }
 
-@media screen and (max-width: 762px) {
-  .start__logoBlock {
+@media screen and (max-width: 768px) {
+  .promo__logoBlock {
     margin: 140px auto 0;
   }
 }
 
 @media screen and (max-width: 470px) {
-  .start__logoBlock {
+  .promo__logoBlock {
     margin: 60px auto 0;
   }
 }
 
-.start__logo {
+.promo__logo {
   display: block;
   width: 722px;
   height: 244px;
@@ -83,7 +83,7 @@
 }
 
 @media screen and (max-width: 1042px) {
-  .start__logo {
+  .promo__logo {
     width: 680px;
     height: 230px;
     position: absolute;

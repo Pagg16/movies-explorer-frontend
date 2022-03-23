@@ -1,7 +1,14 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./Registration.css";
 
 function Registration() {
+  const navigation = useNavigate();
+
+  function goSignin() {
+    navigation("/signin");
+  }
+
   return (
     <div className="registration">
       <div className="registration__formBlock">
@@ -37,10 +44,10 @@ function Registration() {
             maxlength="30"
             type="password"
             name="password"
-            autocomplete="off"
             required
             className="registration__input"
             placeholder="••••••••••••••"
+            autocomplete="off"
           />
           <span class="registration__inputError">Что-то пошло не так...</span>
         </form>
@@ -49,7 +56,11 @@ function Registration() {
         </button>
         <div className="registration__inputBlock">
           <p className="registration__inputText">Уже зарегистрированы?</p>
-          <button type="button" className="registration__inputButton">
+          <button
+            type="button"
+            className="registration__inputButton"
+            onClick={goSignin}
+          >
             Войти
           </button>
         </div>

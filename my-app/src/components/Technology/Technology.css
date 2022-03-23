@@ -18,11 +18,35 @@
 
 @media screen and (max-width: 320px) {
   .technology {
-    padding: 70px 14px 70px;
+    padding: 70px 14px 69px;
   }
 }
 
-.technology__header {
+.technology__headerText {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+  margin: 0 0 23px;
+}
+
+@media screen and (max-width: 330px) {
+  .technology__headerText {
+    font-size: 18px;
+    line-height: 22px;
+    margin-bottom: 28px;
+  }
+}
+
+.technology__borderBottom {
+  width: 100%;
+  height: 1px;
+  background: #dadada;
+}
+
+.technology__title {
   width: 100%;
   font-family: "Inter", sans-serif;
   font-style: normal;
@@ -36,19 +60,19 @@
 }
 
 @media screen and (max-width: 768px) {
-  .technology__header {
+  .technology__title {
     margin: 78px 0 24px;
   }
 }
 
 @media screen and (max-width: 400px) {
-  .technology__header {
+  .technology__title {
     font-size: 30px;
-    margin-top: 70px;
+    margin: 50px 0 13px;
   }
 }
 
-.technology__title {
+.technology__subtitle {
   font-family: "Inter", sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -62,7 +86,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .technology__title {
+  .technology__subtitle {
     font-size: 12px;
     line-height: 18px;
     margin-bottom: 80px;
@@ -70,7 +94,7 @@
 }
 
 @media screen and (max-width: 400px) {
-  .technology__title {
+  .technology__subtitle {
     font-size: 11px;
     line-height: 16px;
     margin-bottom: 50px;

@@ -1,14 +1,13 @@
 import React from "react";
-import "../Description/Description.css";
 import "./Technology.css";
 
 function Technology() {
   return (
     <div className="technology">
-      <p className="description__headerText">Технологии</p>
-      <div className="description__borderBottom"></div>
-      <p className="technology__header">7 технологий</p>
-      <p className="technology__title">
+      <p className="technology__headerText">Технологии</p>
+      <div className="technology__borderBottom"></div>
+      <p className="technology__title">7 технологий</p>
+      <p className="technology__subtitle">
         На курсе веб-разработки мы освоили технологии, которые применили в
         дипломном проекте.
       </p>
