@@ -1,21 +1,24 @@
 import React from "react";
-import iconSearch from "../../images/iconSearch.png";
+import iconSearch from "../../images/icon__search.svg";
 import "./SearchForm.css";
 
 function SearchForm() {
   return (
     <div className="searchForm">
       <div className="searchForm__header">
-        <img
-          className="searchForm__headerIconSearch"
-          alt="иконка поиска"
-          src={iconSearch}
-        />
+        <div className="searchForm__headerIconSearch">
+          <img
+            className="searchForm__icon"
+            alt="иконка поиска"
+            src={iconSearch}
+          />
+        </div>
         <input
           className="searchForm__input"
           placeholder="Фильмы"
           autocomplete="off"
           type="text"
+          required
         />
         <button type="button" className="searchForm__headerButton">
           Найти

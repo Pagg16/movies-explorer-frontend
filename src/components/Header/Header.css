@@ -155,21 +155,34 @@
     display: block;
     width: 28px;
     height: 23px;
-    background: url("../../images/icon__popupMenu.png") 0 0 / 28px 23px
+    background: url("../../images/icon__popupActiveMenu.svg") 0 0 / 28px 23px
       no-repeat;
     transition: all 0.5s;
   }
 }
 
 .header__popupMenu_active {
-  background: url("../../images/icon__popupMenuClosed.png") center center / 40px
+  background: url("../../images/icon__popupMenuClosed.svg") center center / 40px
     40px no-repeat;
   transform: rotate(360deg);
 }
 
 .header__single {
-  min-height: 110px;
+  min-height: 108px;
   align-items: end;
   max-width: 396px;
   padding: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .header__single {
+    min-height: 270px;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .header__single {
+    justify-content: center;
+    min-height: 94px;
+  }
 }

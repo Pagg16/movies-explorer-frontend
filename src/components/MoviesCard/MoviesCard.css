@@ -60,9 +60,10 @@
   position: absolute;
   top: 14px;
   right: 14px;
+  cursor: pointer;
 }
 
-.moviesCard__elemButton {
+.moviesCard__alreadySaveElemButton {
   border: none;
   border-radius: 50%;
   width: 21px;
@@ -71,6 +72,11 @@
   position: absolute;
   top: 14px;
   right: 14px;
+  cursor: pointer;
+}
+
+.moviesCard__alreadySaveElemButton_delite {
+  background: url("../../images/icon__delBtc.png") center no-repeat #313131;
 }
 
 .moviesCard__elemCover {

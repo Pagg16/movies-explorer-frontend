@@ -19,6 +19,7 @@
 @media screen and (max-width: 320px) {
   .technology {
     padding: 70px 14px 69px;
+    background-color: #202020;
   }
 }
 

@@ -12,13 +12,13 @@ function Technology() {
         дипломном проекте.
       </p>
       <div className="technology__exampleBlock">
-      <p className="technology__exampleText">HTML</p>
-      <p className="technology__exampleText">CSS</p>
-      <p className="technology__exampleText">JS</p>
-      <p className="technology__exampleText">React</p>
-      <p className="technology__exampleText">Git</p>
-      <p className="technology__exampleText">Express.js</p>
-      <p className="technology__exampleText">mongoDB</p>
+        <p className="technology__exampleText">HTML</p>
+        <p className="technology__exampleText">CSS</p>
+        <p className="technology__exampleText">JS</p>
+        <p className="technology__exampleText">React</p>
+        <p className="technology__exampleText">Git</p>
+        <p className="technology__exampleText">Express.js</p>
+        <p className="technology__exampleText">mongoDB</p>
       </div>
     </div>
   );

@@ -41,13 +41,13 @@ function App() {
               <Technology />
               <AboutMe />
               <Portfolio />
-              <Footer />
             </>
           }
         />
 
         <Route path="*" element={<Error />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
