@@ -1,0 +1,197 @@
+.savedMovies {
+  padding: 144px 70px 50px;
+  background: #202020;
+}
+
+@media screen and (max-width: 890px) {
+  .savedMovies {
+    padding: 160px 30px 50px;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .savedMovies {
+    padding: 167px 10px 50px;
+  }
+}
+
+.savedMovies__clollection {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-row-gap: 43px;
+}
+
+@media screen and (max-width: 1236px) {
+  .savedMovies__clollection {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 674px) {
+  .savedMovies__clollection {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media screen and (max-width: 890px) {
+  .savedMovies__clollection {
+    grid-row-gap: 32px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .savedMovies__clollection {
+    grid-row-gap: 18px;
+  }
+}
+
+.savedMovies__collectionElem {
+  justify-self: center;
+  position: relative;
+  height: 247px;
+}
+
+.savedMovies__collectionElem:nth-of-type(3n) {
+  justify-self: end;
+}
+
+.savedMovies__collectionElem:nth-of-type(3n-2) {
+  justify-self: start;
+}
+
+@media screen and (max-width: 1236px) {
+  .savedMovies__collectionElem:nth-of-type(3n) {
+    justify-self: center;
+  }
+  .savedMovies__collectionElem:nth-of-type(3n-2) {
+    justify-self: center;
+  }
+}
+
+@media screen and (max-width: 890px) {
+  .savedMovies__collectionElem:nth-of-type(1n) {
+    justify-self: start;
+  }
+  .savedMovies__collectionElem:nth-of-type(2n-2) {
+    justify-self: end;
+  }
+}
+
+@media screen and (max-width: 674px) {
+  .savedMovies__collectionElem:nth-of-type(1n) {
+    justify-self: center;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .savedMovies__collectionElem {
+    height: 220px;
+  }
+}
+
+.savedMovies__saveElemButton {
+  border: none;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  background: #313131;
+  border-radius: 30px;
+  width: 72px;
+  height: 21px;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+}
+
+.savedMovies__elemButton {
+  border: none;
+  border-radius: 50%;
+  width: 21px;
+  height: 21px;
+  background: url("../../images/check-mark.svg") center no-repeat #ee3465;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+}
+
+.savedMovies__elemCover {
+  width: 360px;
+  height: 201px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 890px) {
+  .savedMovies__elemCover {
+    width: 339px;
+    height: 190px;
+  }
+}
+
+@media screen and (max-width: 746px) {
+  .savedMovies__elemCover {
+    width: 300px;
+    height: 168px;
+  }
+}
+
+.savedMovies__elemTextBlock {
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 10px 14px 0;
+}
+
+@media screen and (max-width: 890px) {
+  .savedMovies__elemTextBlock {
+    padding: 20px 0px 0;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .savedMovies__elemTextBlock {
+    padding: 14px 0px 0;
+  }
+}
+
+.savedMovies__elemText {
+  max-width: 250px;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  color: #ffffff;
+  margin: 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 400px) {
+  .savedMovies__elemText {
+    font-size: 12px;
+  }
+}
+
+.savedMovies__elemDuration {
+  background: #2f2f2f;
+  border-radius: 3px;
+  width: 52px;
+  height: 18px;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8b8b8b;
+  margin: 0;
+}
