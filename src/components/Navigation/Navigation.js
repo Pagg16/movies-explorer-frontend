@@ -54,7 +54,7 @@ function Navigation(props) {
           Сохранённые фильмы
         </Link>
         <div className="navigation__account" onClick={handleAccount}>
-          <p className="navigation__accountText">Аккаунт</p>
+          <p className={`navigation__accountText ${url.pathname === "/profile" ? "navigation__accountText_active" : ""}`}>Аккаунт</p>
           <button type="button" className="navigation__accountButton"></button>
         </div>
       </nav>

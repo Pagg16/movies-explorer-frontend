@@ -2,7 +2,25 @@ import React from "react";
 import iconSearch from "../../images/icon__search.svg";
 import "./SearchForm.css";
 
-function SearchForm() {
+function SearchForm({
+  serSearchMovies,
+  setMoreMovies,
+  setMoreMoviesButton,
+  setDuratinShort,
+  durationShort,
+  searchMovies,
+}) {
+  function handleMovies(e) {
+    setMoreMoviesButton(true);
+    setMoreMovies(0);
+    serSearchMovies(e.target.value);
+  }
+
+  function checkbox() {
+    setMoreMoviesButton(true);
+    setDuratinShort(!durationShort);
+  }
+
   return (
     <div className="searchForm">
       <div className="searchForm__header">
@@ -16,24 +34,28 @@ function SearchForm() {
         <input
           className="searchForm__input"
           placeholder="Фильмы"
-          autocomplete="off"
+          autoComplete="off"
           type="text"
           required
+          value={searchMovies}
+          onChange={handleMovies}
         />
         <button type="button" className="searchForm__headerButton">
           Найти
         </button>
       </div>
       <div className="searchForm__headerUnderline"></div>
-      <label className="searchForm__durationBlock" for="duration">
+      <label className="searchForm__durationBlock" htmlFor="duration">
         <input
           className="searchForm__inputDuration"
           type="checkbox"
           value="duration"
           id="duration"
+          checked={durationShort}
+          onChange={checkbox}
         />
         <span className="searchForm__durationCheckbox"></span>
-        <span className="searchForm__subtitleDuration" for="duration">
+        <span className="searchForm__subtitleDuration" htmlFor="duration">
           Короткометражки
         </span>
       </label>

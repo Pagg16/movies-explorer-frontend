@@ -96,6 +96,11 @@
   align-items: center;
   color: #ffffff;
   margin: 0 13px 0 0;
+  border-bottom: 2px solid rgba(0, 0, 0, 0);
+}
+
+.navigation__accountText_active {
+  border-bottom: 2px solid white;
 }
 
 .navigation__accountButton {

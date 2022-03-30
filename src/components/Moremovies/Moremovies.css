@@ -17,6 +17,13 @@
   justify-content: center;
   color: #ffffff;
   margin: 63px auto 30px;
+  cursor: pointer;
+  transition: opacity linear 0.5s;
+}
+
+.moreMovies__button:hover {
+  transition: opacity linear 0.5s;
+  opacity: 0.5;
 }
 
 @media screen and (max-width: 890px) {
@@ -30,4 +37,8 @@
     width: 240px;
     height: 36px;
   }
+}
+
+.moreMovies__button_visibility {
+  visibility: hidden;
 }

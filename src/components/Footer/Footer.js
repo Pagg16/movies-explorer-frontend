@@ -10,7 +10,7 @@ function Footer() {
       {(url.pathname === "/" ||
         url.pathname === "/movies" ||
         url.pathname === "/saved-movies") && (
-        <div className="footer">
+        <footer className="footer">
           <h3 className="footer__text">
             Учебный проект Яндекс.Практикум х BeatFilm.
           </h3>
@@ -35,7 +35,7 @@ function Footer() {
               </li>
             </ul>
           </div>
-        </div>
+        </footer>
       )}
     </>
   );

@@ -1,45 +1,90 @@
-import React from "react";
+import { React, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 import "./Login.css";
 
-function Login() {
+function Login(props) {
   const navigation = useNavigate();
+
+  const { values, handleChange, errors, isValid } = useFormAndValidation();
+
+  const [errorMessageActive, setErrorMessageActive] = useState(false);
+
+  const buttonActive = isValid.inputOne || isValid.inputTwo;
+
+  function handleChangeInput(e) {
+    setErrorMessageActive(false);
+    handleChange(e);
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    props
+      .login(values.inputOne, values.inputTwo)
+      .then((res) => {
+        setErrorMessageActive(false);
+        localStorage.setItem("jwt", res.token);
+        props.insideDate();
+        navigation("/movies");
+      })
+      .catch((err) => {
+        setErrorMessageActive(true);
+        console.log(err);
+      });
+  }
 
   function goSignup() {
     navigation("/signup");
   }
+
   return (
     <div className="login">
       <div className="login__formBlock">
-        <p className="login__tittle">Рады видеть!</p>
-        <form className="login__form" noValidate>
+        <p className="login__welcome">Рады видеть!</p>
+        <form className="login__form" onSubmit={handleSubmit} noValidate>
           <label className="login__label">E-mail</label>
           <input
-            minlength="2"
-            maxlength="30"
+            value={values.inputOne}
+            onChange={handleChangeInput}
+            minLength={2}
+            maxLength={30}
             type="email"
-            name="email"
-            autocomplete="off"
+            name="inputOne"
+            autoComplete="off"
             required
             className="login__input"
-            placeholder="pochta@yandex.ru"
           />
-          <span class="login__inputError"></span>
+          <span className="login__inputError">{errors.inputOne}</span>
           <label className="login__label">Пароль</label>
           <input
-            minlength="2"
-            maxlength="30"
-            type="text"
-            name="password"
-            autocomplete="off"
+            value={values.inputTwo}
+            onChange={handleChangeInput}
+            minLength={6}
+            maxLength={30}
+            type="password"
+            name="inputTwo"
+            autoComplete="off"
             required
             className="login__input"
           />
-          <span class="login__inputError"></span>
+          <span className="login__inputError">{errors.inputTwo}</span>
+          <span
+            className={`login__submitError ${
+              errorMessageActive ? "login__submitError_active" : ""
+            }`}
+          >
+            При авторизации произошла ошибка.
+          </span>
+          <button
+            type="submit"
+            className={`login__formButton ${
+              !buttonActive ? "login__formButton_disabled" : ""
+            } `}
+            disabled={!buttonActive}
+          >
+            Войти
+          </button>
         </form>
-        <button type="button" className="login__formButton">
-          Войти
-        </button>
         <div className="login__inputBlock">
           <p className="login__inputText">Ещё не зарегистрированы?</p>
           <button

@@ -5,7 +5,7 @@ import { useState } from "react";
 import Navigation from "../Navigation/Navigation";
 import "./Header.css";
 
-function Header() {
+function Header(props) {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
 
   const navigation = useNavigate();
@@ -31,7 +31,11 @@ function Header() {
   }
 
   function handleSignin() {
-    navigation("/signin");
+    if (props.loggedIn) {
+      navigation("/movies");
+    } else {
+      navigation("/signin");
+    }
   }
 
   function handleAccount() {
@@ -48,9 +52,9 @@ function Header() {
         <header className="header">
           {headerIcon}
           <div className="header__path">
-            <a className="header__registerText" onClick={handleSignup}>
+            <p className="header__registerText" onClick={handleSignup}>
               Регистрация
-            </a>
+            </p>
             <button
               className="header__signinButton"
               type="button"

@@ -1,6 +1,7 @@
 .savedMovies {
   padding: 144px 70px 50px;
   background: #202020;
+  min-height: 59vh;
 }
 
 @media screen and (max-width: 890px) {

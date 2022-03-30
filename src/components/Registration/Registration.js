@@ -1,59 +1,123 @@
-import React from "react";
+import { React, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 import "./Registration.css";
 
-function Registration() {
+function Registration(props) {
+  const { values, handleChange, errors, isValid } = useFormAndValidation();
+
+  const [errorMessageActive, setErrorMessageActive] = useState(false);
+
+  const buttonActive =
+    isValid.inputOne && isValid.inputTwo && isValid.inputThree;
+
   const navigation = useNavigate();
 
   function goSignin() {
     navigation("/signin");
   }
 
+  function handleChangeInput(e) {
+    setErrorMessageActive(false);
+    handleChange(e);
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    props
+      .register(values.inputOne, values.inputTwo, values.inputThree)
+      .then((res) => {
+        setErrorMessageActive(false);
+        props
+          .login(values.inputTwo, values.inputThree)
+          .then((res) => {
+            localStorage.setItem("jwt", res.token);
+            props.insideDate();
+            navigation("/movies");
+          })
+          .catch((err) => console.log(err));
+      })
+      .catch((err) => {
+        setErrorMessageActive(true);
+        console.log(err);
+      });
+  }
+
   return (
     <div className="registration">
       <div className="registration__formBlock">
         <p className="registration__welcome">Добро пожаловать!</p>
-        <form className="registration__form" noValidate>
+        <form className="registration__form" onSubmit={handleSubmit} noValidate>
           <label className="registration__label">Имя</label>
           <input
-            minlength="2"
-            maxlength="30"
+            value={values.inputOne}
+            onChange={handleChangeInput}
+            minLength={2}
+            maxLength={100}
             type="text"
-            name="name"
-            autocomplete="off"
+            name="inputOne"
+            autoComplete="off"
             required
             className="registration__input"
-            placeholder="Виталий"
           />
-          <span class="registration__inputError"></span>
+          <span
+            className={`registration__inputError ${isValid.inputOne ? "" : ""}`}
+          >
+            {errors.inputOne}
+          </span>
           <label className="registration__label">E-mail</label>
           <input
-            minlength="2"
-            maxlength="30"
+            value={values.inputTwo}
+            onChange={handleChangeInput}
+            minLength={2}
+            maxLength={100}
             type="email"
-            name="email"
-            autocomplete="off"
+            name="inputTwo"
+            autoComplete={"off"}
             required
             className="registration__input"
-            placeholder="pochta@yandex.ru"
           />
-          <span class="registration__inputError"></span>
+          <span
+            className={`registration__inputError ${isValid.inputTwo ? "" : ""}`}
+          >
+            {errors.inputTwo}
+          </span>
           <label className="registration__label">Пароль</label>
           <input
-            minlength="2"
-            maxlength="30"
+            value={values.inputThree}
+            onChange={handleChangeInput}
+            minLength={6}
+            maxLength={100}
             type="password"
-            name="password"
+            name="inputThree"
             required
             className="registration__input"
-            placeholder="••••••••••••••"
-            autocomplete="off"
+            autoComplete="off"
           />
-          <span class="registration__inputError">Что-то пошло не так...</span>
+          <span
+            className={`registration__inputError ${
+              isValid.inputThree ? "" : ""
+            }`}
+          >
+            {errors.inputThree}
+          </span>
+          <span
+            className={`registration__submitError ${
+              errorMessageActive ? "registration__submitError_active" : ""
+            }`}
+          >
+            При регистрации профиля произошла ошибка.
+          </span>
+          <button
+            type="submit"
+            className={`registration__formButton ${
+              !buttonActive ? "registration__formButton_disabled" : ""
+            } `}
+            disabled={!buttonActive}
+          >
+            Зарегистрироваться
+          </button>
         </form>
-        <button type="button" className="registration__formButton">
-          Зарегистрироваться
-        </button>
         <div className="registration__inputBlock">
           <p className="registration__inputText">Уже зарегистрированы?</p>
           <button
