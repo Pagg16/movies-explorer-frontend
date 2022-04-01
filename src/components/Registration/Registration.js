@@ -32,8 +32,7 @@ function Registration(props) {
           .login(values.inputTwo, values.inputThree)
           .then((res) => {
             localStorage.setItem("jwt", res.token);
-            props.insideDate();
-            navigation("/movies");
+            props.verification();
           })
           .catch((err) => console.log(err));
       })

@@ -16,6 +16,8 @@ function Profile(props) {
   const [errorNoProfileDateChanges, setErrorNoProfileDateChanges] =
     useState(false);
 
+  const [changeSuccessfully, setShangeSuccessfully] = useState(false);
+
   useEffect(() => {
     setValues({
       inputOne: dataUser.name,
@@ -35,6 +37,7 @@ function Profile(props) {
       props
         .userInformSet(newUserDate)
         .then((res) => {
+          setShangeSuccessfully(true);
           setDataUser(newUserDate);
           setErrorMessageActive(false);
         })
@@ -46,6 +49,7 @@ function Profile(props) {
   }
 
   function handleChangeInput(e) {
+    setShangeSuccessfully(false);
     setErrorNoProfileDateChanges(false);
     setErrorMessageActive(false);
     handleChange(e);
@@ -53,8 +57,9 @@ function Profile(props) {
 
   function singOut() {
     props.setLoggedIn(false);
-    localStorage.removeItem("jwt");
-    navigation("/");
+    localStorage.clear();
+    window.location.reload();
+    // navigation("/");
   }
 
   return (
@@ -119,7 +124,7 @@ function Profile(props) {
               : ""
           } ${
             errorNoProfileDateChanges ? "Данные профиля не были изменены" : ""
-          }`}
+          } ${changeSuccessfully ? "Данные были успешно изменены" : ""}`}
         </span>
         <button
           type="button"

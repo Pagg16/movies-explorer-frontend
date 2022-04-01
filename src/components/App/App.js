@@ -1,5 +1,11 @@
 import React from "react";
-import { Routes, Route, useState } from "react-router-dom";
+import {
+  Routes,
+  Route,
+  useState,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import Header from "../Header/Header";
@@ -38,21 +44,48 @@ function App() {
   const [durationShort, setDuratinShort] = React.useState(false);
   const [savedMoviesArr, setSavedMoviesArr] = React.useState([]);
 
+  const [searchMoviesSaved, serSearchMoviesSaved] = React.useState("");
+  const [durationShortSaved, setDuratinShortSaved] = React.useState(false);
+
+  const navigation = useNavigate();
+
+  const url = useLocation().pathname;
+
+  React.useEffect(() => {
+    if (url !== "/saved-movies") {
+      serSearchMoviesSaved("");
+      setDuratinShortSaved(false);
+    }
+  }, [url]);
+
   React.useEffect(() => {
     if (localStorage.getItem("jwt")) {
       // проверяем токен пользователя
       verification();
+      searchMoviesUpdate();
     }
   }, []);
+
+  function searchMoviesUpdate() {
+    if (localStorage.getItem("searchMovies")) {
+      const searchMovies = localStorage.getItem("searchMovies");
+      serSearchMovies(searchMovies);
+    }
+    if (localStorage.getItem("durationMovies")) {
+      const durationMovies = JSON.parse(localStorage.getItem("durationMovies"));
+      setDuratinShort(durationMovies);
+    }
+  }
 
   function verification() {
     userInform(localStorage.getItem("jwt"))
       .then((res) => {
         if (res) {
           insideDate();
-          setCurrentUser(res);
           downloadMovies();
           downloadMoviesSaved();
+          setCurrentUser(res);
+          navigation("/movies");
         }
       })
       .catch((err) => {
@@ -114,13 +147,16 @@ function App() {
                 register={register}
                 login={login}
                 insideDate={insideDate}
+                downloadMovies={downloadMovies}
+                downloadMoviesSaved={downloadMoviesSaved}
+                verification={verification}
               />
             }
           />
 
           <Route
             path="/signin"
-            element={<Login login={login} insideDate={insideDate} />}
+            element={<Login login={login} verification={verification} />}
           />
 
           <Route
@@ -168,12 +204,12 @@ function App() {
                 component={SavedMovies}
                 moreMovies={moreMovies}
                 setMoreMovies={setMoreMovies}
-                searchMovies={searchMovies}
-                serSearchMovies={serSearchMovies}
+                searchMovies={searchMoviesSaved}
+                serSearchMovies={serSearchMoviesSaved}
                 setMoreMoviesButton={setMoreMoviesButton}
                 moreMoviesButton={moreMoviesButton}
-                setDuratinShort={setDuratinShort}
-                durationShort={durationShort}
+                setDuratinShort={setDuratinShortSaved}
+                durationShort={durationShortSaved}
                 savedMoviesArr={savedMoviesArr}
                 removeMovies={removeMovies}
               />

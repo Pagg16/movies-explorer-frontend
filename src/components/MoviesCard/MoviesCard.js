@@ -5,6 +5,8 @@ import "./MoviesCard.css";
 function MoviesCard(props) {
   const url = useLocation();
 
+  const [disabledMovies, setDisabledMovies] = React.useState(false);
+
   const isSaved = props.savedMoviesArr.some(
     (elem) => elem.movieId === props.movie.id
   );
@@ -50,7 +52,7 @@ function MoviesCard(props) {
   }
 
   function removeMovies() {
-    console.log(props.movie);
+    setDisabledMovies(true);
     props.removeMovies(props.movie._id);
   }
 
@@ -64,6 +66,7 @@ function MoviesCard(props) {
               isSaved ? "moviesCard__saveElemButton_saved" : ""
             }`}
             onClick={savedMovies}
+            disabled={isSaved}
           >
             {isSaved ? "" : "Сохранить"}
           </button>
@@ -73,6 +76,7 @@ function MoviesCard(props) {
           type="button"
           className="moviesCard__alreadySaveElemButton"
           onClick={removeMovies}
+          disabled={disabledMovies}
         />
       )}
       <a

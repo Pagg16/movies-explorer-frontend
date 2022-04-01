@@ -24,8 +24,7 @@ function Login(props) {
       .then((res) => {
         setErrorMessageActive(false);
         localStorage.setItem("jwt", res.token);
-        props.insideDate();
-        navigation("/movies");
+        props.verification();
       })
       .catch((err) => {
         setErrorMessageActive(true);

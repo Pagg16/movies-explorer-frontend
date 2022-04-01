@@ -16,6 +16,7 @@ function SavedMovies({
   savedMoviesArr,
   removeMovies,
 }) {
+
   return (
     <div className="savedMovies">
       <SearchForm

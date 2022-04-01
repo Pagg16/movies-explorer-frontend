@@ -48,7 +48,7 @@ function Header(props) {
 
   return (
     <>
-      {url.pathname === "/" && (
+      {url.pathname === "/" && !props.loggedIn && (
         <header className="header">
           {headerIcon}
           <div className="header__path">
@@ -67,7 +67,8 @@ function Header(props) {
       )}
       {(url.pathname === "/movies" ||
         url.pathname === "/saved-movies" ||
-        url.pathname === "/profile") && (
+        url.pathname === "/profile" ||
+        props.loggedIn) && (
         <>
           <header className="header">
             {headerIcon}

@@ -64,7 +64,7 @@ export function savedMovies(data) {
   }).then(result);
 }
 
-export function downloadSavedMovies(data) {
+export function downloadSavedMovies() {
   return fetch(`${BASE_URL}/movies`, {
     method: "GET",
     headers: {
@@ -72,7 +72,6 @@ export function downloadSavedMovies(data) {
       "Content-Type": "application/json",
       Authorization: `Bearer ${tokenDate}`,
     },
-    body: JSON.stringify(data),
   }).then(result);
 }
 

@@ -17,6 +17,22 @@ function Movies({
   moviesSaved,
   savedMoviesArr,
 }) {
+  React.useEffect(() => {
+      if (localStorage.getItem("searchMovies")) {
+        localStorage.searchMovies = searchMovies;
+      } else {
+        localStorage.setItem("searchMovies", searchMovies);
+      }
+  }, [searchMovies]);
+
+  React.useEffect(() => {
+    if (localStorage.getItem("durationMovies")) {
+      localStorage.durationMovies = JSON.stringify(durationShort);
+    } else {
+      localStorage.setItem("durationMovies", JSON.stringify(durationShort));
+    }
+  }, [durationShort]);
+
   return (
     <div className="movies">
       <SearchForm
