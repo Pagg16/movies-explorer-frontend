@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react";
-import { isEmail } from "../utils/regular";
+const validator = require("validator");
 
 export function useFormAndValidation() {
   const [values, setValues] = useState({
@@ -25,16 +25,17 @@ export function useFormAndValidation() {
     setIsValid({
       ...isValid,
       [name]: (function (e) {
-        if (e.target.name === "email") {
-          if (!isEmail.test(e.target.value)) {
-            setErrors({
-              ...errors,
-              [name]: "Не поставлена точка в адресе почты",
-            });
-            return isEmail.test(e.target.value);
-          } else {
-            return e.target.validity.valid;
-          }
+        if (e.target.type === "email") {
+          !validator.isEmail(e.target.value)
+            ? setErrors({
+                ...errors,
+                [name]: "Ведены неккоректные данные",
+              })
+            : setErrors({
+                ...errors,
+                [name]: "",
+              });
+          return validator.isEmail(e.target.value);
         } else {
           return e.target.validity.valid;
         }

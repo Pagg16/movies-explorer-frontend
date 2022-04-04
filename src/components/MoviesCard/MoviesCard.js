@@ -5,11 +5,17 @@ import "./MoviesCard.css";
 function MoviesCard(props) {
   const url = useLocation();
 
+  const [buttonType, setButtonType] = React.useState(false);
+
   const [disabledMovies, setDisabledMovies] = React.useState(false);
 
   const isSaved = props.savedMoviesArr.some(
     (elem) => elem.movieId === props.movie.id
   );
+
+  const savedMovie = Object.values(props.savedMoviesArr).filter(
+    (elem) => elem.movieId === props.movie.id
+  )[0];
 
   const imageLinkPart = "https://api.nomoreparties.co/";
 
@@ -25,40 +31,60 @@ function MoviesCard(props) {
       ? duratonHours + "ч " + duratonMinut + "м"
       : duratonMinut + "м";
 
+  React.useEffect(() => {
+    if (url.pathname === "/movies") {
+      setButtonType(true);
+    }
+
+    return () => setButtonType(false);
+  }, [url]);
+
   function savedMovies() {
-    const dateMovie = {
-      country: props.movie.country,
-      director: props.movie.director,
-      duration: props.movie.duration,
-      year: props.movie.year,
-      description: props.movie.description,
-      image: imageLinkPart + props.movie.image.url,
-      trailerLink: props.movie.trailerLink,
-      nameRU: props.movie.nameRU,
-      nameEN: props.movie.nameEN,
-      thumbnail: imageLinkPart + props.movie.image.formats.thumbnail.url,
-      movieId: props.movie.id,
-    };
+    setDisabledMovies(true);
+    if (!isSaved) {
+      const dateMovie = {
+        country: props.movie.country,
+        director: props.movie.director,
+        duration: props.movie.duration,
+        year: props.movie.year,
+        description: props.movie.description,
+        image: imageLinkPart + props.movie.image.url,
+        trailerLink: props.movie.trailerLink,
+        nameRU: props.movie.nameRU,
+        nameEN: props.movie.nameEN,
+        thumbnail: imageLinkPart + props.movie.image.formats.thumbnail.url,
+        movieId: props.movie.id,
+      };
 
-    if (dateMovie.country === null) {
-      dateMovie.country = "noCountry";
+      if (dateMovie.country === null) {
+        dateMovie.country = "noCountry";
+      }
+
+      if (dateMovie.nameEN === "") {
+        dateMovie.nameEN = "noName";
+      }
+      props.moviesSaved(dateMovie).finally(() => setDisabledMovies(false));
+    } else {
+      removeMovies();
     }
-
-    if (dateMovie.nameEN === "") {
-      dateMovie.nameEN = "noName";
-    }
-
-    props.moviesSaved(dateMovie);
   }
 
   function removeMovies() {
     setDisabledMovies(true);
-    props.removeMovies(props.movie._id);
+    if (!isSaved) {
+      props
+        .removeMovies(props.movie._id)
+        .finally(() => setDisabledMovies(false));
+    } else {
+      props
+        .removeMovies(savedMovie._id)
+        .finally(() => setDisabledMovies(false));
+    }
   }
 
   return (
     <div className="moviesCard__collectionElem">
-      {url.pathname === "/movies" ? (
+      {buttonType ? (
         <>
           <button
             type="button"
@@ -66,7 +92,7 @@ function MoviesCard(props) {
               isSaved ? "moviesCard__saveElemButton_saved" : ""
             }`}
             onClick={savedMovies}
-            disabled={isSaved}
+            disabled={disabledMovies}
           >
             {isSaved ? "" : "Сохранить"}
           </button>

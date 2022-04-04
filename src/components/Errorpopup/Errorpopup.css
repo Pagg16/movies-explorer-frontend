@@ -1,0 +1,65 @@
+.errorPopup {
+  position: fixed;
+  max-width: 1280px;
+  min-width: 320px;
+  margin: 0 auto 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.errorPopup__block {
+  background-color: white;
+  width: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.errorPopup__errorText {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  text-align: center;
+  color: #ff004d;
+  margin: 0;
+  margin: 0 0 30px;
+}
+
+.errorPopup__closeButton {
+  position: absolute;
+  background: url("../../images/icon__popupMenuClosed.svg") center center / 40px
+    40px no-repeat;
+  width: 30px;
+  height: 30px;
+  top: -35px;
+  right: -35px;
+  transition: all 0.3s linear;
+  cursor: pointer;
+}
+
+.errorPopup__closeButton:hover {
+  opacity: 0.6;
+  transition: all 0.3s linear;
+}
+
+.errorPupup__number {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 80px;
+  text-align: center;
+  color: black;
+  margin: 30px 0 30px;
+}

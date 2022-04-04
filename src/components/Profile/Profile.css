@@ -1,6 +1,8 @@
 .profile {
   background: #202020;
   padding: 148px 0 70px;
+  box-sizing: border-box;
+  min-height: 100vh;
 }
 
 @media screen and (max-width: 768px) {
@@ -144,11 +146,6 @@
   text-align: center;
   color: #ff004c;
   min-height: 13px;
-  visibility: hidden;
-}
-
-.profile__submitError_active {
-  visibility: visible;
 }
 
 .profile__exit {

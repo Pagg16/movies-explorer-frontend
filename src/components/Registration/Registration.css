@@ -1,6 +1,8 @@
 .registration {
   background: #202020;
   padding: 146px 0 70px;
+  min-height: 100vh;
+  box-sizing: border-box;
 }
 
 @media screen and (max-width: 768px) {
@@ -113,17 +115,12 @@
   text-align: center;
   color: #ff004c;
   margin-top: 100px;
-  visibility: hidden;
 }
 
 @media screen and (max-width: 430px) {
   .registration__submitError {
     margin-top: 186px;
   }
-}
-
-.registration__submitError_active {
-  visibility: visible;
 }
 
 .registration__formButton {

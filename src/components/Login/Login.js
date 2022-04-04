@@ -20,15 +20,13 @@ function Login(props) {
   function handleSubmit(e) {
     e.preventDefault();
     props
-      .login(values.inputOne, values.inputTwo)
-      .then((res) => {
+      .userLogin(values.inputOne, values.inputTwo)
+      .then(() => {
         setErrorMessageActive(false);
-        localStorage.setItem("jwt", res.token);
-        props.verification();
+        setTimeout(() => navigation("/movies"), 300);
       })
-      .catch((err) => {
+      .catch(() => {
         setErrorMessageActive(true);
-        console.log(err);
       });
   }
 

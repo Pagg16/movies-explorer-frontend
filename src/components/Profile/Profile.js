@@ -13,8 +13,6 @@ function Profile(props) {
   const [dataUser, setDataUser] = useState(useContext(CurrentUserContext));
 
   const [errorMessageActive, setErrorMessageActive] = useState(false);
-  const [errorNoProfileDateChanges, setErrorNoProfileDateChanges] =
-    useState(false);
 
   const [changeSuccessfully, setShangeSuccessfully] = useState(false);
 
@@ -28,14 +26,11 @@ function Profile(props) {
 
   function saveNewUserInfo() {
     if (
-      dataUser.name === values.inputOne &&
-      dataUser.email === values.inputTwo
+      !(dataUser.name === values.inputOne && dataUser.email === values.inputTwo)
     ) {
-      setErrorNoProfileDateChanges(true);
-    } else {
       const newUserDate = { name: values.inputOne, email: values.inputTwo };
       props
-        .userInformSet(newUserDate)
+        .changeUserinform(newUserDate)
         .then((res) => {
           setShangeSuccessfully(true);
           setDataUser(newUserDate);
@@ -43,14 +38,12 @@ function Profile(props) {
         })
         .catch((err) => {
           setErrorMessageActive(true);
-          console.log(err);
         });
     }
   }
 
   function handleChangeInput(e) {
     setShangeSuccessfully(false);
-    setErrorNoProfileDateChanges(false);
     setErrorMessageActive(false);
     handleChange(e);
   }
@@ -59,7 +52,6 @@ function Profile(props) {
     props.setLoggedIn(false);
     localStorage.clear();
     window.location.reload();
-    // navigation("/");
   }
 
   return (
@@ -111,20 +103,12 @@ function Profile(props) {
         </span>
       </div>
       <div className="profile__buttonsBlock">
-        <span
-          className={`profile__submitError ${
-            errorMessageActive || errorNoProfileDateChanges
-              ? "profile__submitError_active"
-              : ""
-          }`}
-        >
+        <span className="profile__submitError">
           {`${
             errorMessageActive
               ? "При редактировании профиля произошла ошибка."
               : ""
-          } ${
-            errorNoProfileDateChanges ? "Данные профиля не были изменены" : ""
-          } ${changeSuccessfully ? "Данные были успешно изменены" : ""}`}
+          }  ${changeSuccessfully ? "Данные были успешно изменены" : ""}`}
         </span>
         <button
           type="button"

@@ -14,7 +14,6 @@ function MoviesCardList({
   moviesSaved,
   savedMoviesArr,
   removeMovies,
-  serSearchMovies,
 }) {
   const url = useLocation();
 
@@ -137,12 +136,10 @@ function MoviesCardList({
   React.useEffect(() => {
     if (searchMovies === "" && !durationShort) {
       if (amountMovies.length === moviesArr.length || moviesArr.length === 0) {
-        setMoreMoviesButton(false);
-      }
-      if (moviesArr.length === 0) {
-        setNothingFound(true);
-      } else {
         setNothingFound(false);
+        setMoreMoviesButton(false);
+      } else {
+        setMoreMoviesButton(true);
       }
     } else if (searchMovies !== "" && !durationShort) {
       if (

@@ -5,6 +5,7 @@ import {
   useState,
   useLocation,
   useNavigate,
+  useHistory,
 } from "react-router-dom";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
@@ -21,6 +22,7 @@ import Portfolio from "../Portfolio/Portfolio";
 import Registration from "../Registration/Registration";
 import Profile from "../Profile/Profile";
 import Login from "../Login/Login";
+import Errorpopup from "../Errorpopup/Errorpopup";
 import {
   register,
   login,
@@ -47,15 +49,25 @@ function App() {
   const [searchMoviesSaved, serSearchMoviesSaved] = React.useState("");
   const [durationShortSaved, setDuratinShortSaved] = React.useState(false);
 
-  const navigation = useNavigate();
+  const [errorPopupVisible, setErrorPopupVisible] = React.useState(false);
+  const [errorMessage, setErrorMessage] = React.useState({
+    err: "",
+    text: "",
+  });
 
   const url = useLocation().pathname;
+
+  const navigation = useNavigate();
 
   React.useEffect(() => {
     if (url !== "/saved-movies") {
       serSearchMoviesSaved("");
       setDuratinShortSaved(false);
     }
+    return () => {
+      serSearchMoviesSaved("");
+      setDuratinShortSaved(false);
+    };
   }, [url]);
 
   React.useEffect(() => {
@@ -77,6 +89,78 @@ function App() {
     }
   }
 
+  function userLogin(inputOne, inputTwo) {
+    return new Promise((resolve, reject) => {
+      login(inputOne, inputTwo)
+        .then((res) => {
+          localStorage.setItem("jwt", res.token);
+          verification();
+          resolve();
+        })
+        .catch((err) => {
+          if (err === 401) {
+            popupErrorMessage({
+              err: err,
+              text: "Вы ввели неправильный логин или пароль",
+            });
+          } else {
+            popupErrorMessage({
+              err: err,
+              text: "На сервере произошла ошибка",
+            });
+          }
+          reject();
+        });
+    });
+  }
+
+  function userRegistration(inputOne, inputTwo, inputThree) {
+    return new Promise((resolve, reject) => {
+      register(inputOne, inputTwo, inputThree)
+        .then((res) => {
+          resolve();
+        })
+        .catch((err) => {
+          if (err === 400) {
+            popupErrorMessage({
+              err: err,
+              text: "При регистрации пользователя произошла ошибка",
+            });
+          } else if (err === 409) {
+            popupErrorMessage({
+              err: err,
+              text: "Пользователь с таким email уже существует",
+            });
+          } else {
+            popupErrorMessage({
+              err: err,
+              text: "На сервере произошла ошибка",
+            });
+          }
+          reject();
+        });
+    });
+  }
+
+  function changeUserinform(userDate) {
+    return new Promise((resolve, reject) => {
+      userInformSet
+        .apply(userDate)
+        .then((res) => {
+          resolve();
+        })
+        .catch((err) => {
+          reject();
+          if (err === 409) {
+            popupErrorMessage({
+              err: err,
+              text: "Пользователь с данным email уже существует",
+            });
+          }
+        });
+    });
+  }
+
   function verification() {
     userInform(localStorage.getItem("jwt"))
       .then((res) => {
@@ -85,11 +169,28 @@ function App() {
           downloadMovies();
           downloadMoviesSaved();
           setCurrentUser(res);
-          navigation("/movies");
         }
       })
       .catch((err) => {
-        console.log(err);
+        if (err === 400) {
+          popupErrorMessage({
+            err: err,
+            text: "При авторизации произошла ошибка. Переданный токен некорректен",
+          });
+        } else if (err === 401) {
+          popupErrorMessage({
+            err: err,
+            text: `При авторизации произошла ошибка.
+              Токен не передан или передан не в том формате`,
+          });
+        } else if (err === 404) {
+          popupErrorMessage({
+            err: err,
+            text: `Страница по указанному маршруту не найдена`,
+          });
+        } else {
+          popupErrorMessage({ err: err, text: `На сервере произошла ошибка` });
+        }
       });
   }
 
@@ -103,7 +204,10 @@ function App() {
         setMoviesArr(res);
       })
       .catch((err) => {
-        console.log(err);
+        popupErrorMessage({
+          err: err,
+          text: "При загрузке фильмов произошла ошибка",
+        });
       });
   }
 
@@ -112,121 +216,165 @@ function App() {
       .then((res) => {
         setSavedMoviesArr(res);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        popupErrorMessage({
+          err: err,
+          text: "При загрузке сохраненных фильмов произошла ошибка",
+        });
+      });
   }
 
   function moviesSaved(data) {
-    savedMovies(data)
-      .then((movie) => {
-        setSavedMoviesArr([movie, ...savedMoviesArr]);
-      })
-      .catch((err) => console.log(err));
+    return new Promise((resolve, reject) => {
+      savedMovies(data)
+        .then((movie) => {
+          setSavedMoviesArr([movie, ...savedMoviesArr]);
+          resolve();
+        })
+        .catch((err) => {
+          reject();
+          popupErrorMessage({
+            err: err,
+            text: "При сохранении фильма произошла ошибка",
+          });
+        });
+    });
   }
 
   function removeMovies(id) {
-    deleteMovies(id)
-      .then((res) => {
-        setSavedMoviesArr(() =>
-          savedMoviesArr.filter((elem) => elem._id !== id)
-        );
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    return new Promise((resolve, reject) => {
+      deleteMovies(id)
+        .then((res) => {
+          setSavedMoviesArr(() =>
+            savedMoviesArr.filter((elem) => elem._id !== id)
+          );
+          resolve();
+        })
+        .catch((err) => {
+          reject();
+          popupErrorMessage({
+            err: err,
+            text: "При удалении фильма произошла ошибка",
+          });
+        });
+    });
+  }
+
+  function popupErrorMessage(errMessage) {
+    setErrorMessage(errMessage);
+    setErrorPopupVisible(true);
   }
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <div className="app">
+      <div className={`app ${errorPopupVisible ? "app_error" : ""}`}>
         <Header loggedIn={loggedIn} />
-        <Routes>
-          <Route
-            path="/signup"
-            element={
-              <Registration
-                register={register}
-                login={login}
-                insideDate={insideDate}
-                downloadMovies={downloadMovies}
-                downloadMoviesSaved={downloadMoviesSaved}
-                verification={verification}
-              />
-            }
-          />
+        <main className="app__content">
+          {errorPopupVisible && (
+            <Errorpopup
+              errorMessage={errorMessage}
+              setErrorPopupVisible={setErrorPopupVisible}
+            />
+          )}
+          <Routes>
+            <Route
+              path="/signup"
+              element={
+                <Registration
+                  register={register}
+                  login={login}
+                  insideDate={insideDate}
+                  downloadMovies={downloadMovies}
+                  downloadMoviesSaved={downloadMoviesSaved}
+                  verification={verification}
+                  userRegistration={userRegistration}
+                  userLogin={userLogin}
+                />
+              }
+            />
 
-          <Route
-            path="/signin"
-            element={<Login login={login} verification={verification} />}
-          />
+            <Route
+              path="/signin"
+              element={
+                <Login
+                  login={login}
+                  verification={verification}
+                  userLogin={userLogin}
+                  navigation={navigation}
+                />
+              }
+            />
 
-          <Route
-            exact
-            path="/"
-            element={
-              <>
-                <Promo />
-                <AboutProject />
-                <Technology />
-                <AboutMe />
-                <Portfolio />
-              </>
-            }
-          />
+            <Route
+              exact
+              path="/"
+              element={
+                <>
+                  <Promo />
+                  <AboutProject />
+                  <Technology />
+                  <AboutMe />
+                  <Portfolio />
+                </>
+              }
+            />
 
-          <Route path="*" element={<Error />} />
+            <Route path="*" element={<Error />} />
 
-          <Route
-            path="/movies"
-            element={
-              <ProtectedRoute
-                loggedIn={loggedIn}
-                component={Movies}
-                moviesArr={moviesArr}
-                moreMovies={moreMovies}
-                setMoreMovies={setMoreMovies}
-                searchMovies={searchMovies}
-                serSearchMovies={serSearchMovies}
-                setMoreMoviesButton={setMoreMoviesButton}
-                moreMoviesButton={moreMoviesButton}
-                setDuratinShort={setDuratinShort}
-                durationShort={durationShort}
-                moviesSaved={moviesSaved}
-                savedMoviesArr={savedMoviesArr}
-              />
-            }
-          />
+            <Route
+              path="/movies"
+              element={
+                <ProtectedRoute
+                  loggedIn={loggedIn}
+                  component={Movies}
+                  moviesArr={moviesArr}
+                  moreMovies={moreMovies}
+                  setMoreMovies={setMoreMovies}
+                  searchMovies={searchMovies}
+                  serSearchMovies={serSearchMovies}
+                  setMoreMoviesButton={setMoreMoviesButton}
+                  moreMoviesButton={moreMoviesButton}
+                  setDuratinShort={setDuratinShort}
+                  durationShort={durationShort}
+                  moviesSaved={moviesSaved}
+                  savedMoviesArr={savedMoviesArr}
+                  removeMovies={removeMovies}
+                />
+              }
+            />
 
-          <Route
-            path="/saved-movies"
-            element={
-              <ProtectedRoute
-                loggedIn={loggedIn}
-                component={SavedMovies}
-                moreMovies={moreMovies}
-                setMoreMovies={setMoreMovies}
-                searchMovies={searchMoviesSaved}
-                serSearchMovies={serSearchMoviesSaved}
-                setMoreMoviesButton={setMoreMoviesButton}
-                moreMoviesButton={moreMoviesButton}
-                setDuratinShort={setDuratinShortSaved}
-                durationShort={durationShortSaved}
-                savedMoviesArr={savedMoviesArr}
-                removeMovies={removeMovies}
-              />
-            }
-          />
-          <Route
-            path="/profile"
-            element={
-              <ProtectedRoute
-                loggedIn={loggedIn}
-                component={Profile}
-                userInformSet={userInformSet}
-                setLoggedIn={setLoggedIn}
-              />
-            }
-          />
-        </Routes>
+            <Route
+              path="/saved-movies"
+              element={
+                <ProtectedRoute
+                  loggedIn={loggedIn}
+                  component={SavedMovies}
+                  moreMovies={moreMovies}
+                  setMoreMovies={setMoreMovies}
+                  searchMovies={searchMoviesSaved}
+                  serSearchMovies={serSearchMoviesSaved}
+                  setMoreMoviesButton={setMoreMoviesButton}
+                  moreMoviesButton={moreMoviesButton}
+                  setDuratinShort={setDuratinShortSaved}
+                  durationShort={durationShortSaved}
+                  savedMoviesArr={savedMoviesArr}
+                  removeMovies={removeMovies}
+                />
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute
+                  loggedIn={loggedIn}
+                  component={Profile}
+                  changeUserinform={changeUserinform}
+                  setLoggedIn={setLoggedIn}
+                />
+              }
+            />
+          </Routes>
+        </main>
         <Footer />
       </div>
     </CurrentUserContext.Provider>

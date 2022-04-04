@@ -16,13 +16,14 @@ function Movies({
   durationShort,
   moviesSaved,
   savedMoviesArr,
+  removeMovies,
 }) {
   React.useEffect(() => {
-      if (localStorage.getItem("searchMovies")) {
-        localStorage.searchMovies = searchMovies;
-      } else {
-        localStorage.setItem("searchMovies", searchMovies);
-      }
+    if (localStorage.getItem("searchMovies")) {
+      localStorage.searchMovies = searchMovies;
+    } else {
+      localStorage.setItem("searchMovies", searchMovies);
+    }
   }, [searchMovies]);
 
   React.useEffect(() => {
@@ -52,6 +53,7 @@ function Movies({
         durationShort={durationShort}
         moviesSaved={moviesSaved}
         savedMoviesArr={savedMoviesArr}
+        removeMovies={removeMovies}
       />
       <Moremovies
         setMoreMovies={setMoreMovies}

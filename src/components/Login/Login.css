@@ -1,6 +1,8 @@
 .login {
   background: #202020;
   padding: 146px 0 72px;
+  box-sizing: border-box;
+  min-height: 100vh;
 }
 
 @media screen and (max-width: 768px) {
