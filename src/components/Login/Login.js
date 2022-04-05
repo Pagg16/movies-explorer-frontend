@@ -23,7 +23,6 @@ function Login(props) {
       .userLogin(values.inputOne, values.inputTwo)
       .then(() => {
         setErrorMessageActive(false);
-        setTimeout(() => navigation("/movies"), 300);
       })
       .catch(() => {
         setErrorMessageActive(true);

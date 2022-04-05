@@ -94,8 +94,7 @@ function App() {
       login(inputOne, inputTwo)
         .then((res) => {
           localStorage.setItem("jwt", res.token);
-          verification();
-          resolve();
+          verification().then(() => navigation("/movies"), resolve());
         })
         .catch((err) => {
           if (err === 401) {
@@ -118,7 +117,7 @@ function App() {
     return new Promise((resolve, reject) => {
       register(inputOne, inputTwo, inputThree)
         .then((res) => {
-          resolve();
+          userLogin(inputTwo, inputThree).then(() => resolve());
         })
         .catch((err) => {
           if (err === 400) {
@@ -162,36 +161,43 @@ function App() {
   }
 
   function verification() {
-    userInform(localStorage.getItem("jwt"))
-      .then((res) => {
-        if (res) {
-          insideDate();
-          downloadMovies();
-          downloadMoviesSaved();
-          setCurrentUser(res);
-        }
-      })
-      .catch((err) => {
-        if (err === 400) {
-          popupErrorMessage({
-            err: err,
-            text: "При авторизации произошла ошибка. Переданный токен некорректен",
-          });
-        } else if (err === 401) {
-          popupErrorMessage({
-            err: err,
-            text: `При авторизации произошла ошибка.
+    return new Promise((resolve, reject) => {
+      userInform(localStorage.getItem("jwt"))
+        .then((res) => {
+          if (res) {
+            insideDate();
+            downloadMovies();
+            downloadMoviesSaved();
+            setCurrentUser(res);
+            resolve();
+          }
+        })
+        .catch((err) => {
+          if (err === 400) {
+            popupErrorMessage({
+              err: err,
+              text: "При авторизации произошла ошибка. Переданный токен некорректен",
+            });
+          } else if (err === 401) {
+            popupErrorMessage({
+              err: err,
+              text: `При авторизации произошла ошибка.
               Токен не передан или передан не в том формате`,
-          });
-        } else if (err === 404) {
-          popupErrorMessage({
-            err: err,
-            text: `Страница по указанному маршруту не найдена`,
-          });
-        } else {
-          popupErrorMessage({ err: err, text: `На сервере произошла ошибка` });
-        }
-      });
+            });
+          } else if (err === 404) {
+            popupErrorMessage({
+              err: err,
+              text: `Страница по указанному маршруту не найдена`,
+            });
+          } else {
+            popupErrorMessage({
+              err: err,
+              text: `На сервере произошла ошибка`,
+            });
+          }
+          reject();
+        });
+    });
   }
 
   function insideDate() {

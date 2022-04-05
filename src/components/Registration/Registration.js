@@ -32,9 +32,6 @@ function Registration(props) {
       .then(() => {
         setErrorMessageActive(false);
         setSuccessful(true);
-        props
-          .userLogin(values.inputTwo, values.inputThree)
-          .then(() => setTimeout(() => navigation("/movies"), 300));
       })
       .catch(() => {
         setErrorMessageActive(true);
