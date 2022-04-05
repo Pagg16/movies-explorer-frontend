@@ -1,0 +1,123 @@
+.footer {
+  background: #202020;
+  box-sizing: border-box;
+  padding: 78px 70px 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .footer {
+    padding: 78px 30px 20px;
+  }
+}
+
+@media screen and (max-width: 398px) {
+  .footer {
+    padding: 79px 10px 10px;
+  }
+}
+
+.footer__text {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  color: #8b8b8b;
+  margin: 0;
+}
+
+@media screen and (max-width: 400px) {
+  .footer__text {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
+
+.footer__linkBlockUnderline {
+  width: 100%;
+  height: 1px;
+  background: #424242;
+  margin: 20px 0 20px;
+}
+
+@media screen and (max-width: 400px) {
+  .footer__linkBlockUnderline {
+    margin: 21px 0 29px;
+  }
+}
+
+.footer__information {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+@media screen and (max-width: 400px) {
+  .footer__information {
+    flex-direction: column-reverse;
+  }
+}
+
+.footer__informDate {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  color: #ffffff;
+  margin: 0;
+}
+
+@media screen and (max-width: 400px) {
+  .footer__informDate {
+    font-size: 12px;
+    line-height: 15px;
+    color: #8b8b8b;
+  }
+}
+
+.footer__linkInform {
+  min-width: 263px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+@media screen and (max-width: 400px) {
+  .footer__linkInform {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .footer__linkElem:first-child {
+    margin-bottom: 7px;
+  }
+  .footer__linkElem:last-child {
+    margin: 10px 0 27px;
+  }
+}
+
+.footer__linkInformText {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: right;
+  color: #ffffff;
+  margin: 0;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 400px) {
+  .footer__linkInformText {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}

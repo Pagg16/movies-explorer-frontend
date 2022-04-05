@@ -1,0 +1,33 @@
+.moreMovies {
+}
+
+.moreMovies__button {
+  background: #2f2f2f;
+  border-radius: 6px;
+  width: 320px;
+  height: 36px;
+  border: none;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  margin: 63px auto 30px;
+}
+
+@media screen and (max-width: 890px) {
+  .moreMovies__button {
+    margin: 43px auto 30px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .moreMovies__button {
+    width: 240px;
+    height: 36px;
+  }
+}
